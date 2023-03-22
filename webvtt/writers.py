@@ -1,6 +1,6 @@
 class WebVTTWriter(object):
-    def write(self, captions, f):
-        f.write(self.webvtt_content(captions))
+    def write(self, captions, f, offset):
+        f.write(self.webvtt_content(captions, offset))
 
     def webvtt_content(self, captions, offset=0):
         """
@@ -21,7 +21,7 @@ class WebVTTWriter(object):
 
 
 class SRTWriter(object):
-    def write(self, captions, f):
+    def write(self, captions, f, **kwargs):
         for line_number, caption in enumerate(captions, start=1):
             f.write("{}\n".format(line_number))
             f.write(
